@@ -1,9 +1,35 @@
 import tkinter as tk
 from tkinter import filedialog
-from pytube import YouTube
 import threading
-import time
+from pytube import YouTube
 import pyperclip
+
+# Check and install required dependencies
+try:
+    from pytube import YouTube
+except ImportError:
+    print("pytube library is not installed. Installing...")
+    try:
+        import pip
+        pip.main(['install', 'pytube'])
+        from pytube import YouTube
+        print("pytube installed successfully!")
+    except Exception as e:
+        print(f"Error installing pytube: {str(e)}")
+        exit(1)
+
+try:
+    import pyperclip
+except ImportError:
+    print("pyperclip library is not installed. Installing...")
+    try:
+        import pip
+        pip.main(['install', 'pyperclip'])
+        import pyperclip
+        print("pyperclip installed successfully!")
+    except Exception as e:
+        print(f"Error installing pyperclip: {str(e)}")
+        exit(1)
 
 def download_video():
     url = entry.get()
@@ -16,7 +42,8 @@ def download_video():
             yt_stream = yt.streams.filter(progressive=True, file_extension='mp4').order_by('resolution').desc().first()
 
             if yt_stream:
-                yt_stream.download(save_path)
+                download_path = filedialog.asksaveasfilename(defaultextension=".mp4", initialfile=yt.title, initialdir=save_path)
+                yt_stream.download(download_path)
                 download_progress[0] = 100
                 result_label.config(text="Download successful!", fg="green")
             else:
@@ -49,8 +76,8 @@ screen_width = root.winfo_screenwidth()
 screen_height = root.winfo_screenheight()
 
 # Set window size and position it at the center of the screen
-window_width = 400
-window_height = 300
+window_width = 350
+window_height = 250
 x_position = (screen_width - window_width) // 2
 y_position = (screen_height - window_height) // 2
 root.geometry(f"{window_width}x{window_height}+{x_position}+{y_position}")
@@ -62,8 +89,8 @@ label.pack(pady=10)
 entry = tk.Entry(root, width=40, bg="white", fg="black")
 entry.pack(pady=10)
 
-# Create a "Choose where file is saved" button
-browse_button = tk.Button(root, text="Choose where file is saved & Start the download", command=download_video, bg="grey", fg="white")
+# Create "Choose where file is saved" button
+browse_button = tk.Button(root, text="Choose where file is saved", command=download_video, bg="grey", fg="white")
 browse_button.pack(pady=window_height * 0.1)  # Move down by 10%
 
 result_label = tk.Label(root, text="", fg="white", bg="black")
@@ -73,7 +100,7 @@ result_label.pack(pady=10)
 download_progress = [0]
 download_complete = [False]
 
-# Create a "Paste Clipboard" button
+# Create "Paste Clipboard" button
 paste_button = tk.Button(root, text="Paste Clipboard", command=paste_clipboard, bg="grey", fg="white")
 paste_button.pack(pady=10)
 
