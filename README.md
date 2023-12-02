@@ -13,13 +13,13 @@ A simple YouTube video downloader GUI application using Python and tkinter.
 1. **Clone the repository or download the code:**
 
     ```bash
-    git clone https://github.com/your-username/youtube-video-downloader.git
+    git clone (https://github.com/DylanStanding/Python-Video-DownloaderGUI).git
     ```
 
 2. **Navigate to the project directory:**
 
     ```bash
-    cd youtube-video-downloader
+    cd Python-Video-DownloaderGUI
     ```
 
 3. **Install the required dependencies:**
@@ -31,7 +31,7 @@ A simple YouTube video downloader GUI application using Python and tkinter.
 4. **Run the application:**
 
     ```bash
-    python youtube_downloader.py
+    python Python-Video-DownloaderGUI.py
     ```
 
 5. **The GUI window will appear. Follow the instructions to download YouTube videos:**
@@ -44,12 +44,3 @@ A simple YouTube video downloader GUI application using Python and tkinter.
 ## Notes
 
 - The program uses the `pytube` library for YouTube video downloading.
-- Ensure you have a stable internet connection for the program to work effectively.
-
-## Contributing
-
-If you find any issues or have suggestions for improvement, feel free to open an issue or create a pull request.
-
-## License
-
-This project is licensed under the MIT License - see the [LICENSE](LICENSE) file for details.
