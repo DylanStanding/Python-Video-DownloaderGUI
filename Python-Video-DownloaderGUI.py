@@ -39,7 +39,7 @@ def paste_clipboard():
 
 # Create the main window
 root = tk.Tk()
-root.title("YouTube Video Downloader")
+root.title("MesaTech™")
 
 # Set the window background to black
 root.configure(bg="black")
