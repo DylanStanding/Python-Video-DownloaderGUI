@@ -63,7 +63,7 @@ entry = tk.Entry(root, width=40, bg="white", fg="black")
 entry.pack(pady=10)
 
 # Create a "Choose where file is saved" button
-browse_button = tk.Button(root, text="Choose where file is saved", command=download_video, bg="grey", fg="white")
+browse_button = tk.Button(root, text="Choose where file is saved & Start the download", command=download_video, bg="grey", fg="white")
 browse_button.pack(pady=window_height * 0.1)  # Move down by 10%
 
 result_label = tk.Label(root, text="", fg="white", bg="black")
